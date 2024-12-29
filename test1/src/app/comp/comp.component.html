@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="ime">
+        {{indeks + "." + vozac?.name}}
+    </div>
+
+    <img class="slika" width="300" [src]="vozac?.iconUrl">
+
+    <div class="team">
+        {{vozac?.team}}
+    </div>
+
+
+    <button class="button" (click)="onDrvView()">Klikni me</button>
+
+    <div>
+        &nbsp;
+    </div>
+</div>

@@ -1,5 +1,20 @@
+<!-- app.component.html -->
 <div class="container">
-  <app-comp *ngFor="let drv of vozaci; index as i" [vozac]="drv" (click)="onAppView()" [indeks]="i+1" class="card">
-  </app-comp>
+  <header>
+    <h1>{{title}}</h1>
+  </header>
 
+  <main>
+    <div class="drivers-grid">
+      <app-comp *ngFor="let voz of vozaci; 
+                let i = index; 
+                first as prv; 
+                last as posleden; 
+                odd as nepar; 
+                even as par" [vozac]="voz" (click)="kliknatVozac()" [indeks]="i + 1"
+        [attr.aria-label]="'Driver ' + voz?.name + ', position ' + (i + 1) + ' of ' + vozaci.length" role="listitem"
+        [class.is-first]="prv" [class.is-last]="posleden" [class.is-even]="par" [class.is-odd]="nepar">
+      </app-comp>
+    </div>
+  </main>
 </div>

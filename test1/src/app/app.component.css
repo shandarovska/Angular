@@ -1,24 +1,45 @@
-.container { 
-    display: flex;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    padding: 20px;
-    gap: 20px;
+/* app.component.css */
+.container {
     max-width: 1200px;
-    background-color: white;
-    min-height: 100vh;
-    justify-content: center;
-}
-
-.card {
-    max-width: 350px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    display: block;
-    flex: 1 1 300px;
-}
-
-.card:hover {
-    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.4);
-    transform: translateY(-5px);
-}
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  h1 {
+    color: #333;
+    font-size: 2.5rem;
+  }
+  
+  .drivers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px;
+  }
+  
+  .is-first {
+    border-left: 3px solid gold;
+  }
+  
+  .is-last {
+    border-left: 3px solid #999;
+  }
+  
+  .is-even {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+  
+  .is-odd {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  @media (max-width: 768px) {
+    .drivers-grid {
+      grid-template-columns: 1fr;
+    }
+  }

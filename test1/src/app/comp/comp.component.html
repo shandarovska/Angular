@@ -1,18 +1,28 @@
-<div class="card">
-    <div class="ime">
-        {{indeks + "." + vozac?.name}}
+<div [ngClass]="stilKarticka()" role="listitem" [attr.aria-label]="'Driver card for ' + vozac?.name">
+    <ng-template #noImage role="alert" aria-live="polite">
+        No image available
+    </ng-template>
+
+    <div role="heading" aria-level="2" [ngClass]="stilIme()" [id]="'driver-' + vozac?.id">
+        {{indeks + ". " + vozac?.name}}
     </div>
 
-    <img class="slika" width="300" [src]="vozac?.iconUrl">
+    <img class="driver-image" width="300" *ngIf="vozac?.iconUrl; else noImage" [src]="vozac?.iconUrl"
+        [attr.alt]="vozac?.name + ' driver photo'" [attr.aria-describedby]="'team-' + vozac?.id">
 
-    <div class="team">
+    <div [id]="'team-' + vozac?.id" class="team-info">
         {{vozac?.team}}
     </div>
 
-
-    <button class="button" (click)="onDrvView()">Klikni me</button>
-
-    <div>
-        &nbsp;
+    <div [ngSwitch]="vozac?.category" role="status" aria-live="polite">
+        <div *ngSwitchCase="'EXPERT'">Expert</div>
+        <div *ngSwitchCase="'LUNATIC'">Lunatic</div>
+        <div *ngSwitchCase="'ASD'">ASD</div>
+        <div *ngSwitchDefault>Unrated</div>
     </div>
+
+    <button (click)="kliknatKopce()" class="action-button" [attr.aria-label]="'View details for ' + vozac?.name"
+        [attr.aria-describedby]="'driver-' + vozac?.id">
+        Click me
+    </button>
 </div>
